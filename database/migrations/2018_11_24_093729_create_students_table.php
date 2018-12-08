@@ -17,6 +17,7 @@ class CreateStudentsTable extends Migration
             $table->increments('id');
             $table->string("name");
             $table->string("email");
+            $table->string("image");
             $table->timestamp("created_dt");
             //$table->timestamps();
         });
