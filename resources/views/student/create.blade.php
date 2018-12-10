@@ -13,7 +13,7 @@
     </div>
   </div>
 </div>
-<form action="/student/@yield('studentid')"method="post" enctype="multipart/form-data">
+<form action="/student"method="post" enctype="multipart/form-data">
     {{csrf_field()}}
     @section("editmethod")
     @show

@@ -41,7 +41,7 @@ class studentcontroller extends Controller
      */
     public function Store(Request $request)
     {   
-        dd('ok');
+       /* dd('ok');
         echo "hello";
         exit;
         student::create([
@@ -51,13 +51,12 @@ class studentcontroller extends Controller
                 'email'=>'manish@gmail.com',
                 'image'=>'123.jpg',
 
-        ]);
-        session()->flash("stdmessage","student has been inserted");
-        return redirect("/student");
-       /* $data = $request->All();
+        ]);*/
+       
+        $data = $request->All();
         $file = $request->File("image");
-        print_r($data);
-        die;
+        //print_r($data);
+        //die;
             if($request->Hasfile("image"))
             {   
                 $file->Move("public/upload/",$file->getClientoriginalname());
@@ -89,9 +88,10 @@ class studentcontroller extends Controller
                                     $is_saved = $obj->save();
                                     if($is_saved)
                                     {
+                                         session()->flash("stdmessage","student has been inserted");
+                                        return redirect("/student");
                                         
-                                        
-                                    }*/
+                                    }
 
     }
 
