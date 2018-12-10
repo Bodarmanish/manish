@@ -9,7 +9,7 @@
     </div>
   </div>
 </div>
-<form action="/student/47/" method="post" enctype="multipart/form-data">
+<form action="/student/$student1->id" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
     {{method_field('PUT')}}
     
