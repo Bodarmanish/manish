@@ -39,24 +39,19 @@ class studentcontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {     // dd($request->all());  
+    public function Store(Request $request)
+    {     
 
-        $data = $request->all();
-        $file = $request->file("image");
-       
-            if($request->hasfile("image"))
+        $data = $request->All();
+        $file = $request->File("image");
+        print_r($data);
+        die;
+            if($request->Hasfile("image"))
             {   
-                $file->Move("upload/",$file->getClientoriginalname());
+                $file->Move("public/upload/",$file->getClientoriginalname());
 
             }
-       
-        //print_r($file);
-       //die;
-          
-               
-          
-        $data = validator::Make($request->All(),
+            $data = validator::Make($request->All(),
                                     [
                                         "name"=>"required|max:255",
                                         "email"=>"required|max:255|unique:students|email",
