@@ -33,14 +33,16 @@ class studentcontroller extends Controller
         return view("student.create");
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {       
+    {     // dd($request->all());  
+
+        $data = $request->all();
         $file = $request->file("image");
        
             if($request->hasfile("image"))
@@ -54,7 +56,7 @@ class studentcontroller extends Controller
           
                
           
-        $data = validator::make($request->all(),
+        $data = validator::Make($request->All(),
                                     [
                                         "name"=>"required|max:255",
                                         "email"=>"required|max:255|unique:students|email",
@@ -71,7 +73,7 @@ class studentcontroller extends Controller
                                     $obj = new student;
                                     $obj->name = $request->name;
                                     $obj->email = $request->email;
-                                    $multi_image = '';
+                                   
                                     if(!empty($file))
                                     {
                                         $obj->image = $file->getClientoriginalname();
@@ -120,6 +122,7 @@ class studentcontroller extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+      
         $file = $request->file("image");
        // print_r($data);
         $data = validator::make($request->all(),
@@ -131,7 +134,6 @@ class studentcontroller extends Controller
                                     [
                                         "name.required"=>"Please enter the name",
                                         "email.required"=>"Please enter the email",
-                                       
                                         "email.email"=>"Enter a valid email",
                                     ])->validate();
                                     
