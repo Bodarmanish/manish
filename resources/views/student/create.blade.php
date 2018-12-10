@@ -7,16 +7,15 @@
   <div class="row">
    <div class="container owtcontainer">
     <div class="card">
-      <div class="card-header"><h1>{{ucfirst(substr(Route::currentRouteName(),8))}} Student</h1>
+      <div class="card-header"><h1>Create Student</h1>
       <a href="{{url('/student')}}" class="btn btn-info"style="float:right">< Back</a>
       </div>
     </div>
   </div>
 </div>
-<form action="/student"method="post" enctype="multipart/form-data">
+<form action="/student" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
-    @section("editmethod")
-    @show
+    
     <div class="border">
         <div class="form-group">
             <label for="name">Name:</label>

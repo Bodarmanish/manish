@@ -9,9 +9,12 @@ use Validator;
 
 
 
+
+
 class studentcontroller extends Controller
-{
-    /**
+{   
+
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -115,6 +118,7 @@ class studentcontroller extends Controller
     public function edit($id)
     {
         $student1 = student::find($id);
+       // print_r($student1);
         return view("student.edit",compact("student1"));
     }
 
@@ -130,7 +134,7 @@ class studentcontroller extends Controller
         $data = $request->all();
       
         $file = $request->file("image");
-       // print_r($data);
+       // print_r([$data,$file]);
         $data = validator::make($request->all(),
                                     [
                                         "name"=>"required|max:255",
@@ -142,8 +146,9 @@ class studentcontroller extends Controller
                                         "email.required"=>"Please enter the email",
                                         "email.email"=>"Enter a valid email",
                                     ])->validate();
-                                    
-                                    $student = student::find($id);
+                                    //print_r([$data,$file]);
+                                    //die();
+                                    $student = new student;
                                     $student->name = $request->name;
                                     $student->email = $request->email;
                                     $student->image = $file->getClientoriginalname();
