@@ -40,9 +40,19 @@ class studentcontroller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function Store(Request $request)
-    {     
+    {   
+        
+        student::create([
 
-        $data = $request->All();
+                'name'=>'manish',
+
+                'email'=>'manish@gmail.com',
+                'image'=>'123.jpg',
+
+        ]);
+        session()->flash("stdmessage","student has been inserted");
+        return redirect("/student");
+       /* $data = $request->All();
         $file = $request->File("image");
         print_r($data);
         die;
@@ -78,9 +88,8 @@ class studentcontroller extends Controller
                                     if($is_saved)
                                     {
                                         
-                                        session()->flash("stdmessage","student has been inserted");
-                                        return redirect("/student");
-                                    }
+                                        
+                                    }*/
 
     }
 
