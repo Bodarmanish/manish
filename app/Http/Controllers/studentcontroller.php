@@ -41,7 +41,9 @@ class studentcontroller extends Controller
      */
     public function Store(Request $request)
     {   
-        
+        dd('ok');
+        echo "hello";
+        exit;
         student::create([
 
                 'name'=>'manish',
