@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Http\Resources\product;
+
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class ProductResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        $data=[    
+
+                     'id' => $this->id,  
+                     'name' =>$this->name,
+                     'product Detail'=>$this->detail,
+                     'price'=>$this->price,
+                     'stock'=>$this->stock == 0 ? 'Out of stock' : $this->stock,
+                     'discount'=>$this->discount,
+                     'TotalPrice' => round((1-($this->discount/100)) * $this->price,2),
+
+                     'rating'=> $this->reviews->count() > 0 ? round($this->reviews->sum('star')/$this->reviews->count(),2) : 'No rating yet',
+
+                     'href' => ['reviews' => route('reviews.index',$this->id)],
+
+                ];
+        //return parent::toArray($request);
+        //return  print_r($data);
+        //return print_r($data['name']) ;
+             return response()->json([
+                                         'status'=>$data['id'],
+                                         'data'=>$data,
+
+                                     ]);
+
+    }
+
+
+    
+
+}

@@ -15,22 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 
 });
-/*route::get("first","firstcontrollr@index");
 
-route::get("firstv","studentcontroller@index");
+Auth::routes();
 
-route::get("db","firstcontrollr@query");
-
-route::get("orm","firstcontrollr@insertorm");
-
-route::get("model","firstcontrollr@allquery");
-
-route::get("valid","validate@myform");
-
-route::post("submitmyform","validate@submitmyform");
-
-route::get("model","firstcontrollr@model");
-
-route::resource("movie","moviecontroller");*/
-
-Route::resource("student","studentcontroller");
+Route::get('/home', 'HomeController@index')->name('home');

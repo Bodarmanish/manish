@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login', 'PassportController@login');
+Route::post('register', 'PassportController@register');
+ 
+Route::middleware('auth:api')->group(function () 
+{	
+		Route::post('login/pwdchange', 'PassportController@changePassword');
+		Route::apiResource('/product','ProductController');
+
+		Route::apiResource('products/{product}/reviews','ReviewsController');
+		Route::delete('reviews/{id}','ReviewsController@destroy');
+
+});
+
